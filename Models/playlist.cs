@@ -1,9 +1,9 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using System.Text.Json.Serialization;
 
 namespace MongoExample.Models;
 
+// single record model
 public class Record {
 
     [BsonId]
@@ -11,8 +11,6 @@ public class Record {
     public string? Id { get; set; }
 
     public string date { get; set; } = null!;
-    // [BsonElement("items")]
-    // [JsonPropertyName("items")]
     public int calories { get; set; }
     public int protein { get; set; }
     public int carbs { get; set; }

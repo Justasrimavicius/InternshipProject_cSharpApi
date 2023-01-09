@@ -1,5 +1,6 @@
 namespace MongoExample.Models;
 
+// MongoDB settings(configuration is in appsettings.json)
 public class MongoDBSettings {
 
     public string ConnectionURI { get; set; } = null!;
