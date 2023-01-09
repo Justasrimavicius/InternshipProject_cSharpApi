@@ -20,12 +20,13 @@ public class RecordController: Controller {
         return await _mongoDBService.GetAsync();
     }
     [HttpGet("{id}")]
-
+    public async Task<Record> GetOne(string id){
+        return await _mongoDBService.GetOneAsync(id);
+    }
     [HttpPost]
 
     public async Task<IActionResult> Post([FromBody] Record Record) {
         await _mongoDBService.CreateAsync(Record);
-        System.Console.WriteLine("waaaaaaaa");
         HttpContext.Response.Headers.Add("Access-Control-Allow-Origin", "*");
         return CreatedAtAction(nameof(Get), new { id = Record.Id }, Record);
     }

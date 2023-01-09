@@ -19,6 +19,4 @@ public class Record {
     public int fats { get; set; }
     public bool goalsAchieved { get; set; } = false!;
 
-
-
 }

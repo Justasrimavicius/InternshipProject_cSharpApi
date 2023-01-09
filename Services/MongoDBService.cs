@@ -18,14 +18,14 @@ public class MongoDBService {
     public async Task<List<Record>> GetAsync() {
         return await _RecordCollection.Find(new BsonDocument()).ToListAsync();
     }
+        public async Task<Record> GetOneAsync(string id) {
+        var filter = Builders<Record>.Filter.Eq("_id", ObjectId.Parse(id));
+
+        var final = await _RecordCollection.Find(filter).SingleAsync();
+        return final;
+    }
     public async Task CreateAsync(Record Record) {
         await _RecordCollection.InsertOneAsync(Record);
-        return;
-    }
-    public async Task AddToPlaylistAsync(string id, string movieId) {
-        FilterDefinition<Record> filter = Builders<Record>.Filter.Eq("Id", id);
-        UpdateDefinition<Record> update = Builders<Record>.Update.AddToSet<string>("movieIds", movieId);
-        await _RecordCollection.UpdateOneAsync(filter, update);
         return;
     }
 
